@@ -1,25 +1,41 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import {
+  BrowserRouter,
+  Route,
+  Link,
+  Routes,
+} from "react-router-dom";
+
+import LandingPage from './components/views/LandingPage/LandingPage';
+import Keyboard from './components/views/Keyboard/Keyboard';
+import Rank from './components/views/Rank/Rank';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <div className="balck-nav" style={{color: "red"}}>
+            <ul>
+                <li >
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/Keyboard">타자치기</Link>
+                </li>
+                <li>
+                    <Link to="/Rank">랭킹보기</Link>
+                </li>
+            </ul>
+        </div>
+    
+    <Routes>
+        <Route path='/' element={<LandingPage />} />
+        <Route path='/Keyboard' element={<Keyboard />} />
+        <Route path='/Rank' element={<Rank />} />
+    </Routes>
+</BrowserRouter>
+  )
 }
+
 
 export default App;
